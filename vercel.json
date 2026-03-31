@@ -1,0 +1,16 @@
+{
+  "framework": "nextjs",
+  "regions": ["hnd1"],
+  "functions": {
+    "app/api/**/*.ts": {
+      "maxDuration": 60
+    }
+  },
+  "build": {
+    "env": {
+      "NEXTJS_EXPERIMENTAL_OPTIMIZE_PACKAGE_IMPORTS": "0",
+      "NODE_OPTIONS": "--max-old-space-size=4096"
+    }
+  },
+  "buildCommand": "npm run build"
+}

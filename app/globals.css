@@ -1,0 +1,152 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 全局样式 */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* 自定义容器类 - 移动端友好的间距 */
+.container-custom {
+  @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Notion内容样式 */
+.embed-container {
+  @apply my-6 p-4 bg-gray-50 border border-gray-200 rounded-lg text-center;
+}
+
+.embed-link {
+  @apply text-blue-600 hover:text-blue-800 font-light break-all;
+}
+
+/* Header导航样式 */
+.nav-link {
+  @apply relative text-gray-700 hover:text-black transition-colors duration-300 text-sm font-light;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #333;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Prose样式优化 */
+.prose {
+  @apply text-gray-700;
+}
+
+.prose a {
+  @apply text-blue-600 hover:text-blue-800;
+}
+
+.prose pre {
+  @apply bg-gray-100 p-4 rounded-lg overflow-x-auto;
+}
+
+.prose code {
+  @apply bg-gray-100 px-1 py-0.5 rounded text-sm;
+}
+
+/* 限制图片大小，防止超出边界 */
+.prose img {
+  @apply rounded-lg shadow-md mx-auto block;
+  max-width: 100%;
+  height: auto;
+  max-height: 500px;
+  object-fit: contain;
+  /* 🔧 彻底移除边框 - 使用 !important 确保优先级 */
+  border: 0 !important;
+  outline: none !important;
+  box-sizing: border-box !important;
+}
+
+/* 🔧 针对 Notion 优化图片的特殊处理 */
+.prose .notion-optimized-image,
+.prose img.notion-optimized-image,
+.notion-optimized-image {
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* 🔧 覆盖所有可能的图片容器边框 */
+.prose .optimized-image-wrapper,
+.prose .notion-image-container,
+.optimized-image-wrapper,
+.notion-image-container {
+  border: 0 !important;
+  outline: none !important;
+}
+
+/* Notion正文段落间距优化 */
+.prose p {
+  @apply mb-6;
+}
+
+.prose h1, .prose h2, .prose h3 {
+  @apply mb-4 mt-8 text-gray-900 font-semibold;
+}
+
+.prose ul, .prose ol {
+  @apply mb-6;
+}
+
+.prose blockquote {
+  @apply mb-6 border-l-4 border-gray-300 pl-4 italic text-gray-600;
+}
+
+/* 移动端优化 - 确保内容可见性 */
+@media (max-width: 768px) {
+  .container-custom {
+    @apply px-3 sm:px-4;
+  }
+}
+
+/* 🚨 紧急修复：确保导航链接在所有设备上都可见 */
+/* 修复framer-motion动画卡住导致导航不可点击的问题 */
+.nav-link,
+[aria-label*="导航"] a,
+header nav a {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* 确保framer-motion动画在移动端正常显示 */
+@media (max-width: 768px) {
+  [style*="opacity: 0"] {
+    opacity: 1 !important;
+  }
+  
+  /* 确保网格布局在小屏幕上正常显示 */
+  .grid {
+    display: grid !important;
+  }
+  
+  /* 确保图片在移动端不超出边界 */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* 防止相片详情页图片溢出 */
+  .aspect-ratio img,
+  [class*="aspect-"] img {
+    width: 100% !important;
+    max-width: 100% !important;
+    object-fit: cover !important;
+  }
+}

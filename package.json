@@ -1,0 +1,48 @@
+{
+  "name": "akira-kosemura-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build --no-lint",
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit",
+    "cache:stats": "node scripts/cache-manager.js stats",
+    "cache:clear": "node scripts/cache-manager.js clear",
+    "cache:clear:text": "node scripts/cache-manager.js clear text",
+    "cache:clear:images": "node scripts/cache-manager.js clear images",
+    "cache:clear:image-cache": "node scripts/clear-image-cache.js",
+    "cache:clear:photo": "node scripts/clear-photo-cache.js",
+    "cache:warmup": "node scripts/cache-manager.js warmup",
+    "images:preload": "node scripts/preload-reflection-images.js",
+    "images:preload:prod": "NEXT_PUBLIC_SITE_URL=https://overflowing.live node scripts/preload-reflection-images.js",
+    "cos:info": "curl -s \"${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}/api/cos/info\" | jq .",
+    "cos:info:prod": "curl -s \"https://overflowing.live/api/cos/info\" | jq .",
+    "cos:cache": "node scripts/test-cos-cache.js",
+    "sync-images": "node scripts/sync-images-to-cos.js",
+    "sync-images:force": "node scripts/sync-images-to-cos.js --force"
+  },
+  "dependencies": {
+    "@notionhq/client": "^4.0.2",
+    "@vercel/analytics": "^1.5.0",
+    "cos-nodejs-sdk-v5": "^2.15.4",
+    "framer-motion": "^10.16.0",
+    "lucide-react": "^0.294.0",
+    "next": "14.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.0",
+    "dotenv": "^17.2.3",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "^8.4.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "^5.2.0"
+  }
+}

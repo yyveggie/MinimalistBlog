@@ -1,0 +1,86 @@
+# === GitHub Public Template .gitignore ===
+# 排除个人内容，只保留代码模板
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+
+# Logs
+logs
+*.log
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Temporary files
+*.tmp
+*.temp
+
+# === Personal content (excluded from public repo) ===
+
+# Personal docs
+/docs
+图片上传.txt
+.cos-upload-cache.json
+
+# Personal images
+public/images/homepage/*
+public/images/music/*
+public/images/photos/*
+!public/images/photos/world_japan/
+!public/images/photos/world_usa/
+public/images/photos/world_japan/*
+public/images/photos/world_usa/*
+public/images/projects/*
+public/images/movies/*
+!public/images/**/.gitkeep
+
+# COS cache
+public/cos-cache.json
+
+# Push script itself (no need in template)
+push-to-github.sh
+.gitignore.github
